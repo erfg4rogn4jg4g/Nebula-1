@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Nebula Proxy</title>
+  <style>
+    body { font-family: Arial, sans-serif; background: #181d2b; color: #fff; text-align: center; margin-top: 10vh; }
+    input[type="text"] { width: 60%; padding: 9px; margin-right: 10px; border-radius: 4px; border: none; }
+    button { padding: 9px 16px; border: none; border-radius: 4px; background: #3578e5; color: #fff; font-size: 1em; cursor: pointer; }
+    button:hover { background: #2851a3; }
+  </style>
+</head>
+<body>
+  <h1>Nebula Proxy</h1>
+  <form id="proxy-form">
+    <input type="text" id="url-input" placeholder="Enter URL to proxy (e.g., https://example.com)" required />
+    <button type="submit">Go</button>
+  </form>
+  <iframe id="proxy-frame" style="width:90vw;height:70vh;margin-top:30px;border:2px solid #3578e5;border-radius:8px;"></iframe>
+  <script>
+    const form = document.getElementById('proxy-form');
+    const input = document.getElementById('url-input');
+    const frame = document.getElementById('proxy-frame');
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+      frame.src = '/proxy?url=' + encodeURIComponent(input.value);
+    });
+  </script>
+</body>
+</html>
